@@ -32,8 +32,17 @@
 		<module>yapr-core</module>
 		<module>yapr-cli</module>
 		<module>yapr-ui-desktop</module>
-		<module>yapr-ui-desktop-mac</module>
-		<!-- <module>yapr-ext-java7</module> -->
 	</modules>
 
+    <profiles>
+        <profile>
+            <id>osx-build</id>
+            <activation>
+                <os><family>mac</family></os>
+            </activation>
+            <modules>
+		        <module>yapr-ui-desktop-mac</module>
+            </modules>
+        </profile>
+    </profiles>
 </project>

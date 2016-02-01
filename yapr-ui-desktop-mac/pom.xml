@@ -11,40 +11,40 @@
 		<artifactId>yapr-base</artifactId>
 		<groupId>org.yapr</groupId>
 		<version>0.2-SNAPSHOT</version>
-        <relativePath>../yapr-base</relativePath>
+		<relativePath>../yapr-base</relativePath>
 	</parent>
 
 	<build>
 		<plugins>
-            <plugin>
-                <groupId>sh.tak.appbundler</groupId>
-                <artifactId>appbundle-maven-plugin</artifactId>
-                <version>1.0.4</version>
-                <configuration>
-                    <mainClass>org.yapr.ui.YaprUIMac</mainClass>
-                    <bundleName>Yapr</bundleName>
-                    <diskImageFile>${project.artifactId}-${project.version}.dmg</diskImageFile>
-                    <generateDiskImageFile>true</generateDiskImageFile>
-                </configuration>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>bundle</goal>
-                        </goals>
-                    </execution>
-                </executions>
-            </plugin>
 			<plugin>
-			    <groupId>org.apache.maven.plugins</groupId>
-			    <artifactId>maven-jar-plugin</artifactId>
-			    <configuration>
-			        <archive>
-			            <manifest>
-			                <mainClass>org.yapr.ui.YaprUIMac</mainClass>
-			            </manifest>
-			        </archive>
-			    </configuration>
+				<groupId>sh.tak.appbundler</groupId>
+				<artifactId>appbundle-maven-plugin</artifactId>
+				<version>1.0.4</version>
+				<configuration>
+					<mainClass>org.yapr.ui.YaprUIMac</mainClass>
+					<bundleName>Yapr</bundleName>
+					<diskImageFile>${project.build.directory}/${project.artifactId}-${project.version}.dmg</diskImageFile>
+					<generateDiskImageFile>true</generateDiskImageFile>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>bundle</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<archive>
+						<manifest>
+							<mainClass>org.yapr.ui.YaprUIMac</mainClass>
+						</manifest>
+					</archive>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
