@@ -1,0 +1,64 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>yapr-ui-desktop-mac</artifactId>
+	<version>0.2-SNAPSHOT</version>
+	<name>Yapr - UI desktop Mac</name>
+	<description>Yet another picture renamer (tool) - Mac OS X specific user interface</description>
+
+	<parent>
+		<artifactId>yapr-base</artifactId>
+		<groupId>org.yapr</groupId>
+		<version>0.2-SNAPSHOT</version>
+        <relativePath>../yapr-base</relativePath>
+	</parent>
+
+	<build>
+		<plugins>
+            <plugin>
+                <groupId>sh.tak.appbundler</groupId>
+                <artifactId>appbundle-maven-plugin</artifactId>
+                <version>1.0.4</version>
+                <configuration>
+                    <mainClass>org.yapr.ui.YaprUIMac</mainClass>
+                    <bundleName>Yapr</bundleName>
+                    <diskImageFile>${project.artifactId}-${project.version}.dmg</diskImageFile>
+                    <generateDiskImageFile>true</generateDiskImageFile>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>bundle</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+			<plugin>
+			    <groupId>org.apache.maven.plugins</groupId>
+			    <artifactId>maven-jar-plugin</artifactId>
+			    <configuration>
+			        <archive>
+			            <manifest>
+			                <mainClass>org.yapr.ui.YaprUIMac</mainClass>
+			            </manifest>
+			        </archive>
+			    </configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencies>
+		<dependency>
+			<groupId>de.huxhorn.lilith</groupId>
+			<artifactId>de.huxhorn.lilith.3rdparty.macify</artifactId>
+			<version>1.4</version>
+		</dependency>
+		<dependency>
+			<groupId>org.yapr</groupId>
+			<artifactId>yapr-ui-desktop</artifactId>
+			<version>0.2-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+</project>
