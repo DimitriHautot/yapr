@@ -22,6 +22,7 @@ public class MovieFilter implements FileFilter {
 		return (((pathname.isFile() && (absolutePathUpperCase.endsWith(".MPG")
 				|| absolutePathUpperCase.endsWith(".MPEG")
 				|| absolutePathUpperCase.endsWith(".MP4")
+				|| absolutePathUpperCase.endsWith(".M4V")
 				|| absolutePathUpperCase.endsWith(".MOV")
 				|| absolutePathUpperCase.endsWith(".3GP")
 				|| absolutePathUpperCase.endsWith(".AVI")))));
