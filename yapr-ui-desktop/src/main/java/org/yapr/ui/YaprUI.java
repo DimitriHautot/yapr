@@ -257,6 +257,7 @@ public class YaprUI extends JFrame implements ActionListener, ListSelectionListe
 		addFilesDialog.setDialogTitle("Select picture and movie files to rename");
 		addFilesDialog.setDialogType(JFileChooser.OPEN_DIALOG);
 		addFilesDialog.setVisible(false);
+		addFilesDialog.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
 
 		// "destination" folder dialog
 		destinationFolderDialog = new FileDialog(this, "Select destination folder", FileDialog.LOAD);
