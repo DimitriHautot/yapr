@@ -15,7 +15,7 @@ public class Configuration {
 	private int hoursOffset = 0;
 	private File sourceFolder = null;
 	private String targetFolder = null;
-	private boolean processSubFolders = false;
+	private boolean processSubFolders = true;
 	private List<FileRenamer> renamers = new ArrayList<FileRenamer>();
 
 	public Configuration() {
