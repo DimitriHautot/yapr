@@ -35,7 +35,7 @@ public class ExifPictureRenamer extends AbstractAssetRenamer {
 				return exifDirectory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL, TimeZone.getTimeZone("Europe/Brussels")); // FIXME
 			}
 		} catch (Exception e) {
-			logger.error("An error occured; message is: {}", e.getMessage());
+			logger.error("An error occurred; message is: {}", e.getMessage());
 		}
 		return null;
 	}
