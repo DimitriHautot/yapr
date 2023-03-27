@@ -1,8 +1,10 @@
 package org.yapr.renamer.strategies;
 
-import com.drew.imaging.jpeg.JpegMetadataReader;
+import com.drew.imaging.mp4.Mp4MetadataReader;
 import com.drew.metadata.Metadata;
 import com.drew.metadata.exif.ExifSubIFDDirectory;
+import com.drew.metadata.mp4.Mp4Directory;
+import org.yapr.filter.MovieFilter;
 import org.yapr.filter.PictureFilter;
 
 import java.io.File;
@@ -12,7 +14,7 @@ import java.util.TimeZone;
 /**
  * @author Dimitri
  */
-public class ExifPictureRenamer extends AbstractAssetRenamer {
+public class ExifMovieRenamer extends AbstractAssetRenamer {
 
 	/* (non-Javadoc)
 	 * @see org.yapr.renamer.strategies.AssetRenamerStrategy#accepts(java.io.File)
@@ -23,15 +25,15 @@ public class ExifPictureRenamer extends AbstractAssetRenamer {
 			return false;
 		}
 
-		return PictureFilter.acceptFile(asset);
+		return MovieFilter.acceptFile(asset);
 	}
 
 	public Date getDateToUse(File file) {
 		try {
-            Metadata metadata = JpegMetadataReader.readMetadata(file);
-            ExifSubIFDDirectory exifDirectory = metadata.getFirstDirectoryOfType(ExifSubIFDDirectory.class);
-            if (exifDirectory.containsTag(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL)) {
-				return exifDirectory.getDate(ExifSubIFDDirectory.TAG_DATETIME_ORIGINAL, TimeZone.getTimeZone("Europe/Brussels")); // FIXME
+            Metadata metadata = Mp4MetadataReader.readMetadata(file); // FIXME Find a better/safer way to read video metadata
+			Mp4Directory directory = metadata.getFirstDirectoryOfType(Mp4Directory.class);
+            if (directory.containsTag(Mp4Directory.TAG_CREATION_TIME)) {
+				return directory.getDate(Mp4Directory.TAG_CREATION_TIME, TimeZone.getTimeZone("Europe/Brussels")); // FIXME
 			}
 		} catch (Exception e) {
 			logger.error("An error occurred; message is: {}", e.getMessage());

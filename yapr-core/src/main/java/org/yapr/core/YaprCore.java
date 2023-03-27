@@ -122,8 +122,8 @@ public class YaprCore {
 	/**
 	 * Used by the CLI.
 	 * 
-	 * @param folder
-	 * @param processSubFolder
+	 * @param configuration
+	 * @param baseFolder
 	 * @return
 	 */
 	public int process(Configuration configuration, File baseFolder) {

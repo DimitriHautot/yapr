@@ -6,10 +6,7 @@ import java.util.List;
 
 import org.yapr.domain.Configuration;
 import org.yapr.domain.FileRenamer;
-import org.yapr.renamer.strategies.ExifPictureRenamer;
-import org.yapr.renamer.strategies.ExifThumbnailMovieRenamer;
-import org.yapr.renamer.strategies.ExifThumbnailRawPictureRenamer;
-import org.yapr.renamer.strategies.LastModificationFileRenamer;
+import org.yapr.renamer.strategies.*;
 
 /**
  * @author Dimitri
@@ -47,6 +44,7 @@ public class ConfigurationFactory {
 		instances.add(new ExifThumbnailRawPictureRenamer());
 		instances.add(new ExifThumbnailMovieRenamer());
 		instances.add(new ExifPictureRenamer());
+		instances.add(new ExifMovieRenamer());
 		instances.add(new LastModificationFileRenamer());
 
 		return instances;
